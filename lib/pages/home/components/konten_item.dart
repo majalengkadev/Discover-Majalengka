@@ -64,9 +64,12 @@ class KontenItem extends StatelessWidget {
               const SizedBox(
                 width: 2,
               ),
-              Text(
-                "${konten.desa}, ${konten.kecamatan}",
-                style: const TextStyle(color: Colors.black54),
+              Expanded(
+                child: Text(
+                  "${konten.desa}, ${konten.kecamatan}",
+                  overflow: TextOverflow.ellipsis,
+                  style: const TextStyle(color: Colors.black54),
+                ),
               )
             ],
           )
