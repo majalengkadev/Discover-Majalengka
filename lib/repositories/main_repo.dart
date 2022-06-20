@@ -32,10 +32,6 @@ class MainRepo {
     final list = <Konten>[];
     for (var d in data) {
       list.add(Konten.fromMap(d));
-      list.add(Konten.fromMap(d));
-      list.add(Konten.fromMap(d));
-      list.add(Konten.fromMap(d));
-      list.add(Konten.fromMap(d));
     }
     responData.listData = list;
     return responData;
