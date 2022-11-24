@@ -2,10 +2,8 @@
 
 import 'package:discover_majalengka/helpers/constants.dart';
 import 'package:discover_majalengka/pages/settings/settings_page.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
 import 'components/bottom_menu.dart';
 import 'components/kategori_widget.dart';
 import 'components/popular_widget.dart';
@@ -21,10 +19,13 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   var _currentTab = 0;
+  
+    
 
   void _selectTab(int index) {
     setState(() => _currentTab = index);
   }
+
 
   @override
   Widget build(BuildContext context) {
