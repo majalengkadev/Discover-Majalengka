@@ -33,16 +33,16 @@ class _PopularWidgetState extends State<PopularWidget> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            "Populer di Majalengka",
-            style: TextStyle(
-                fontSize: 20,
-                color: Colors.black54,
-                fontWeight: FontWeight.w500),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
+          // const Text(
+          //   "Populer di Majalengka",
+          //   style: TextStyle(
+          //       fontSize: 20,
+          //       color: Colors.black54,
+          //       fontWeight: FontWeight.w500),
+          // ),
+          // const SizedBox(
+          //   height: 10,
+          // ),
           showData()
         ],
       ),
@@ -68,7 +68,7 @@ class _PopularWidgetState extends State<PopularWidget> {
           if (snapshot.hasData) {
             final data = snapshot.data!.listData as List<Konten>;
             return GridView.count(
-              crossAxisCount: 2,
+              crossAxisCount: 1,
               shrinkWrap: true,
               mainAxisSpacing: 12,
               crossAxisSpacing: 12,

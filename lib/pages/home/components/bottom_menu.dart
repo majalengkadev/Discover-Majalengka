@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import '../home_page.dart';
 
 class BottomMenu extends StatelessWidget {
-  const BottomMenu({
-    Key? key,
-  }) : super(key: key);
+  const BottomMenu({Key? key, required this.currentTab, required this.onSelectTab}) : super(key: key);
+
+   
+  final int currentTab;
+  final ValueChanged<int> onSelectTab;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +30,8 @@ class BottomMenu extends StatelessWidget {
         type: BottomNavigationBarType.fixed,
         selectedItemColor: Colors.white,
         unselectedItemColor: const Color(0xff777877),
-        currentIndex: 0,
+        currentIndex: currentTab,
+        onTap: onSelectTab,
       ),
     );
   }

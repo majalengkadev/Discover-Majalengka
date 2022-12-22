@@ -1,10 +1,10 @@
+import 'dart:math';
+
 import 'package:discover_majalengka/helpers/components/loading.dart';
 import 'package:discover_majalengka/models/kategori.dart';
 import 'package:discover_majalengka/models/respon_data.dart';
 import 'package:discover_majalengka/repositories/main_repo.dart';
 import 'package:flutter/material.dart';
-
-import 'kategori_item.dart';
 
 class KategoriWidget extends StatefulWidget {
   const KategoriWidget({
@@ -15,36 +15,26 @@ class KategoriWidget extends StatefulWidget {
   State<KategoriWidget> createState() => _KategoriWidgetState();
 }
 
-class _KategoriWidgetState extends State<KategoriWidget> {
+class _KategoriWidgetState extends State<KategoriWidget>
+    with TickerProviderStateMixin {
   final repo = MainRepo();
   late Future<ResponData> dataKategori;
+  late TabController _tabController;
 
   @override
   void initState() {
     super.initState();
     getData();
+    _tabController = TabController(length: 8, vsync: this);
+    _tabController.animateTo(2);
   }
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 16, top: 8),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Text(
-            "Kategori",
-            style: TextStyle(
-                fontSize: 20,
-                color: Colors.black54,
-                fontWeight: FontWeight.w500),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          showKategori()
-        ],
-      ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        showKategori()],
     );
   }
 
@@ -66,19 +56,31 @@ class _KategoriWidgetState extends State<KategoriWidget> {
           }
           if (snapshot.hasData) {
             final data = snapshot.data!.listData as List<Kategori>;
+            List<Tab> tabs = [];
+            
+            for (int i = 0; i < data.length; i++) {
+              tabs.add(Tab(
+                icon: Icon(Icons.hotel),
+               text:  data[i].name,
+              ));
+            }
 
-            return SizedBox(
-              height: 50,
-              child: ListView.builder(
-                  itemCount: data.length,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) {
-                    final kategori = data[index];
-                    return KategoriItem(
-                      title: kategori.name,
-                      image: kategori.image,
-                    );
-                  }),
+            return TabBar(
+              padding: EdgeInsets.only(left: 16),
+              labelColor: Colors.black,
+              unselectedLabelColor: Colors.grey,
+              indicatorWeight: 3,
+              indicatorColor: Colors.black,
+              indicatorSize: TabBarIndicatorSize.tab,
+              indicatorPadding: const EdgeInsets.all(5),
+              isScrollable: true,
+              physics: const BouncingScrollPhysics(),
+              onTap: (int index) {
+                print('Tab $index is tapped');
+              },
+              enableFeedback: true,
+              controller: _tabController,
+              tabs: tabs,
             );
           }
 
