@@ -19,7 +19,7 @@ Peroject ini menggunakan library [GetX](https://pub.dev/packages/get) sebagai St
 
 1. Daftar dan Create API Key dari [OpenApi MajalengkaDev](https://openapi.majalengkadev.com) 
 2. Rename file `.env.example` menjadi `.env` dan masukkan API Key yang telah dibuat sebelumnya.
-3. Generate file config .env dengan command:
+3. Generate file config `.env` [info envied](https://pub.dev/packages/envied) dengan command :
     ```
     flutter pub run build_runner build
     ```
