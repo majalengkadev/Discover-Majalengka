@@ -1,16 +1,39 @@
-# discover_majalengka
+# Discover Majalengka
 
-A new Flutter project.
+Discover Majalengka App adalah aplikasi berisikan informasi tempat-tempat yang ada di kab Majalengka.
 
-## Getting Started
+Aplikasi ini menggunakan Rest API dari [OpenApi MajalengkaDev](https://openapi.majalengkadev.com) sebagai sumber datanya.
 
-This project is a starting point for a Flutter application.
+### Getting Started
 
-A few resources to get you started if this is your first Flutter project:
+Download project deppendecy menggunakan command:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+```
+flutter pub get
+```
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+Peroject ini menggunakan library [GetX](https://pub.dev/packages/get) sebagai State Manajemenya.
+
+### API Key
+
+1. Daftar dan Create API Key dari [OpenApi MajalengkaDev](https://openapi.majalengkadev.com) 
+2. Rename file `.env.example` menjadi `.env` dan masukkan API Key yang telah dibuat sebelumnya.
+3. Generate file config .env dengan command:
+    ```
+    flutter pub run build_runner build
+    ```
+
+### Generate Template GetX
+
+Untuk memudahkan membuatkan pattern module bisa menggunakan [Get CLI](https://pub.dev/packages/get_cli).
+
+1. Instal GetX CLI
+    ```
+    flutter pub global activate get_cli
+    ```
+2. Membuat module / page, misalkan kita mau membuat module `user` maka commandnya:
+    ```
+    get create page:user
+    ```
+    Hasil generatenya berupa View, Controller dan Binding yang bisa ditemukkan di folder `lib/app/modules/user`

@@ -1,25 +1,23 @@
-import 'package:discover_majalengka/pages/home/home_page.dart';
 import 'package:flutter/material.dart';
 
+import 'package:get/get.dart';
+
+import 'app/routes/app_pages.dart';
+
 void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Discover Majalengka',
+  runApp(
+    GetMaterialApp(
       debugShowCheckedModeBanner: false,
+      title: "Discover Majalegka",
+      initialRoute: AppPages.INITIAL,
+      getPages: AppPages.routes,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
-        fontFamily: "Montserrat",
+        scaffoldBackgroundColor: Colors.white54,
+        textTheme: const TextTheme(
+          bodyText1: TextStyle(color: Colors.black54),
+        ),
       ),
-      home: const HomePage(),
-    );
-  }
+    ),
+  );
 }
